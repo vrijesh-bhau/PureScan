@@ -1,39 +1,32 @@
-export type RiskLevel = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
-
-export interface Ingredient {
-  id: string;
-  name: string;
-  baseRisk: RiskLevel;
-  isUnknown?: boolean;
-}
-
-export interface ExtractedData {
-  frontPackText: string;
-  ingredientsText: string;
-  nutritionText: string;
-  parsedIngredients: string[];
-  ocrConfidence: number;
-}
+export type RiskLevel = 'Low' | 'Moderate' | 'High';
 
 export interface AnalysisResult {
-  totalRiskScore: number;
-  safetyMeterLevel: 'Minimal' | 'Moderate' | 'High' | 'Severe';
-  topRisks: string[];
-  confidenceScore: number;
-  completeness: number;
-  resolution: number;
-  isRefused: boolean;
-  refusalReason?: string;
-  ingredients: Ingredient[];
-  adiExposure: string;
-  novaClassification: number;
-  categoryTruth: string;
-  populationWarnings: string[];
-  regulatorySources: string[];
+  product: string;
+  brand?: string;
+  overallRisk: RiskLevel;
+  whyThisRating: string[];
+  good: string[];
+  concerns: string[];
+  forDailyUse: string;
+  confidence: number;
+  ingredients?: string;
+  isFood: boolean;
+  notFoodMessage?: string;
 }
 
-export interface UserProfile {
-  bodyWeight: number;
-  isChildMode: boolean;
-  language: 'en' | 'hi';
+export type Language = 
+  | 'en' | 'hi' | 'hinglish' 
+  | 'bn' | 'te' | 'mr' | 'ta' 
+  | 'gu' | 'ur' | 'kn' | 'or' 
+  | 'ml' | 'pa';
+
+export interface UserPreferences {
+  style?: string; // "Answer in 1 line", "Explain in detail", etc.
+  language: Language;
+}
+
+export interface MemoryItem {
+  id: string;
+  timestamp: number;
+  result: AnalysisResult;
 }

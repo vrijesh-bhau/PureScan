@@ -1,6 +1,6 @@
 {
-  "name": "PureScan - Food Safety Analyzer",
-  "description": "A camera-first food label scanner that evaluates packaged foods for Indian users using EU EFSA and US FDA regulatory standards.",
+  "name": "FoodSafe AI - Intelligent Label Scanner",
+  "description": "A production-ready AI-powered food label scanner for Indian consumers. Analyzes packaged food labels for sugar, salt, additives, and ultra-processing risks.",
   "requestFramePermissions": [
     "camera"
   ]
